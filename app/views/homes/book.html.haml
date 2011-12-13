@@ -1,0 +1,10 @@
+%h1 Practical Rails Social Networking Sites
+%h2 Rails. Практика по созданию социальной сети
+%br/
+%p Нашел недавно очень занимательную книгу, описывающую детальное создание сайта так называемой социальной сети на Ruby on Rails. Хоть и написана была достаточно давно, но ничего даже отдаленно похожего у русских писателей-программистов я пока не находил. Поэтому и решил сделать свой, пусть и не профессиональный, но надеюсь близкий к таковому, перевод данного великолепнейшего труда.
+%p 
+	Перевод буду делать постепенно, выкладывая главы и разделы по мере поступления свободного времени
+	= image_tag "/images/book/smile.png", :style => 'padding:0;margin:0;border:none;display:inline;'
+%ul
+	- @articles.each do |article|
+		%li{:style=>'margin-top:10px;'}= link_to article.title, book_show_path(article), :style => 'display:block;padding:0;margin:0;text-decoration:none;'

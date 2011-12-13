@@ -1,0 +1,65 @@
+!!!
+%html
+	%head
+		%title www.юлиансайт.рф. Разработка сайтов в Воронеже. Создание сайта в Воронеже. Раскрутка сайта в Воронеже, сайт веб студии
+		%meta{:name=>"keywords", :content=>"Воронеж создание сайтов создать воронеже разработка реклама интернет создать сайт раскрутка"}
+		%meta{:name=>"description", :content=>"Создание сайтов в Воронеже. Поддержка сайтов. Продвижение сайтов. Раскрутка сайтов. Создать сайт в Воронеже."}
+		= stylesheet_link_tag "ie.css", "screen.css", "print.css", "../javascripts/fancybox/jquery.fancybox.css", "style.css"
+		= javascript_include_tag :defaults, "fancybox/jquery.fancybox.pack.js", "script", "message_send"
+		= include_gritter
+		= csrf_meta_tag
+	%body
+		= gritter_flash_messages
+		.logo
+			= link_to_home("Разработка сайтов")
+			= link_to("ОТПРАВИТЬ ЗАЯВКУ", asked_path, :class=>'feedback fancybox fancybox.ajax"', :id=>'send-question')
+		.top
+			.header
+				.left
+		.container
+			.navigation
+				= link_to_home("Главная")
+				= link_to('Контакты', contact_path, :class => 'active')
+				= link_to('Цены', price_path, :class => 'active')
+				= link_to('Вопрос-ответ', index_questions_path(1), :class => 'active')
+				= link_to('Статьи', news_path, :class => 'active')
+				= link_to('RoR для создания социальной сети', book_path, :class => 'active')
+			.main
+				.content
+					.post#post-1
+						- if @article && @article.parent_id && @article.parent_id==8
+							#book= yield
+						- else
+							= yield
+					%p{:style=>"text-align:center"}
+				.sidenav#sidebar
+					- if current_user != nil
+						%b= current_user.name
+						= link_to('выйти', exit_path)
+					%h2 Категории
+					%ul
+						%li.cat-item.cat-item-1
+							= link_to_home("Главная")
+							= link_to('Контакты', contact_path, :class => 'active')
+							= link_to('Цены', price_path, :class => 'active')
+							= link_to('Вопрос-ответ', index_questions_path(1), :class => 'active')
+							= link_to('Статьи', news_path, :class => 'active')
+							= link_to('RoR для создания соц...', book_path, :class => 'active')
+							=# %a#showButton вход
+							=# link_to_function "Show me the Magic!" do |page|
+							-# page.replace_html :nav, 'dsfsdf'
+							-# page.select("#nav a").each do |element|
+							-# element.visual_effect :highlight
+					%h2 Свежие статьи
+					%ul
+						- last_news.each do |n|
+							%li
+								= link_to(n.title, new_show_path(n.id), :class=>'active')
+				.clearer
+					%span
+				.footer
+					%h4
+						Недорогой качественный и продуманный сайт в Воронеже:
+						= link_to('www.юлиансайт.рф', { :controller => 'homes', :action => 'index' }, :class => 'active', :style => "color: gray;")
+				.clearer
+					%span

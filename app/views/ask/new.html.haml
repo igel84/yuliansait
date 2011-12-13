@@ -1,0 +1,12 @@
+= stylesheet_link_tag "bootstrap.css"
+%h1{:style=>"text-align:center;font-size:14px;"} Здесь Вы можете задать свой вопрос
+- form_tag('/asked', :method=>:post) do
+	= hidden_field_tag('page', request.env["HTTP_REFERER"])
+	= label_tag 'Ваш email:'
+	= text_field_tag('autor', '', :style=>'width:200px;height:20px;margin-left:5px;')
+	%br/
+	.body-text{:style=>'margin-top:10px;'}
+		= label_tag 'Текст вопроса:'
+		= text_area_tag('body', '', :style=>'width:200px;height:70px;margin-left:5px;', :id=>'messageText')
+	%br/
+	= submit_tag 'Отправить', :style=>"font-size:10px;margin:8px auto;width:150px; display:block;height:30px;", :class=>'btn info', :id=>'submitButton'

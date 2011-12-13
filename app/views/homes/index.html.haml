@@ -1,0 +1,9 @@
+.entry	
+	= link_to 'оглавление', book_path if @article.parent_id && @article.parent_id==8
+	%h1= @article.title
+	%br/
+	!= @article.body
+- if @article.info != ''
+	%p.info 
+		!= @article.info
+	-# title("page_title")

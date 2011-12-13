@@ -1,0 +1,4 @@
+- form_for(@article, :url => { :controller=>'cms/articles', :action=>'update' }) do |f|
+	= f.hidden_field :id, :value=>@article.id
+	= f.text_area(:body, :cols=>120, :rows=>25)
+	= f.submit 'сохранить'
