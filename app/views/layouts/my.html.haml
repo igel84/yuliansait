@@ -10,6 +10,13 @@
 		= csrf_meta_tag
 	%body
 		= gritter_flash_messages
+		%div{:style=>'display:none;'}
+			%script{:type=>'text/javascript'}
+				(function(w,c) { (w[c]=w[c]||[]).push(function(){ try { w.yaCounter11331550=new Ya.Metrika({id:11331550, enableAll:true}); } catch(e) {} }); })(window, "yandex_metrika_callbacks");
+		%script{:src=>"//mc.yandex.ru/metrika/watch.js", :type=>"text/javascript", :defer=>"defer"}
+		%noscript
+			%div
+				%img{:src=>"mc.yandex.ru/watch/11331550", :style=>"position:absolute;left:-9999px;", :alt=>""}
 		.logo
 			= link_to_home("Разработка сайтов")
 			= link_to("ОТПРАВИТЬ ЗАЯВКУ", asked_path, :class=>'feedback fancybox fancybox.ajax"', :id=>'send-question')
